@@ -1,0 +1,27 @@
+---
+title: "Places in Recife, Pernambuco"
+date: "2024-11-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Selected locations in the northeastern Brazilian city of Recife, capital of Pernambuco state.
+
+```{r}
+library(leaflet)
+
+map_points <- data.frame(lat = c(-8.136168612,-7.990217311,-8.012780403,-8.036533525,-8.063272588,-8.060220564,-8.045481226,-8.047539294,-8.133288775,-8.121347193),
+                            long = c(-34.90709635,-34.85635397,-34.8519338,-34.91862902,-34.9079616,-34.90756417,-34.90188594,-34.9017817,-34.90487884,-34.95116011),
+                            text = c('Escola Americana do Recife','Ouro Preto','Academia Santa Gertrudes','Casa forte','Estrada dos Remédios (house)','Estrada dos Remédios (apartment)','Graças (apartment)','Graças (house)','Boa Viagem (apartment)','Lagoa Encantada (house)')) 
+```
+
+```{r}
+map_points %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(lng = map_points$long, lat = map_points$lat, popup = map_points$text, markerOptions(riseOnHover = TRUE))
+
+```
