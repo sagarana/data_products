@@ -1,7 +1,8 @@
 ---
 title: 'Developing Data Products: Assignment 2'
+subtitle: 'use arrows to advance slides'
 output: ioslides_presentation
-date: "2024-11-13"
+date: "November 13, 2024"
 ---
 
 ```{r setup, include=FALSE}
