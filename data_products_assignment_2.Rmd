@@ -1,0 +1,62 @@
+---
+title: 'Developing Data Products: Assignment 2'
+output: ioslides_presentation
+date: "2024-11-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## The data (mtcars)
+
+Graphs on the next slides use three variables from the `mtcars` data frame: mpg, hp, and cyl. Below are their values for the first 5 observations.
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+```
+
+```{r, echo=TRUE}
+mtcars %>%
+        select(c(mpg,hp,cyl)) %>%
+        head(5)
+```
+
+## Initial graph (ggplot2)
+
+The first step is to build a plot using the `ggplot2` package and to assign it to the variable `plot1`
+
+```{r pressure}
+plot1 <- mtcars %>%
+        ggplot(aes(x=hp, y=mpg, color=as.factor(cyl))) +
+        geom_point() +
+        xlab("Horsepower") + 
+        ylab("Miles/gallon") +
+        labs(color = "Cylinders", title="MPG and HP by number of cylinders")
+plot1
+```
+
+## Interactive graph (plotly)
+
+Plotly's `ggplotly` function enhances `plot1` with interactivity (_hover over graph for options_)
+
+```{r, warning=FALSE}
+ggplotly(plot1) %>%
+add_trace(
+    type="scatter", 
+    mode="markers",
+    name="",
+    x = mtcars$hp,
+    y = mtcars$mpg,
+    opacity = 0,
+    text = rownames(mtcars),
+    hovertemplate = paste('<b>%{text}</b><br>',
+                          '<i>mpg:</i> %{y}<br>',
+                        '<i>hp:</i> %{x}'),
+    hoverlabel = list(bgcolor = "white"),
+    showlegend = FALSE
+  )
+
+```
