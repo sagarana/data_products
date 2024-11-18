@@ -3227,15 +3227,15 @@ data2021 &lt;- read_sav(&quot;cen_ind_2021_pumf_v2.sav&quot;)</pre>
 
 <p>The <a href='https://hdl.handle.net/11272.1/AB2/1WTDOP/EV7NLM' title=''>2021 Census Individuals PUMF User Guide</a> documents each variable and informs data preparation.</p>
 
-<p>Only a handful of variables are used in the app, and the data is limited to ages 18-69 (about 530K rows).</p>
+<p>Only a handful of variables are used in the app, and the data is limited to ages 18-69 (about 530K rows). Here’s a sample table from the prepared dataset.</p>
 
-<p>Here’s a sample table from the prepared dataset.</p>
+<pre class = 'prettyprint lang-r'>table(census_subset_2021$Citizen, census_subset_2021$Gender)</pre>
 
-<pre >                                     
-                                      Woman+   Man+
-  Canadian citizens by birth          185014 193327
-  Canadian citizens by naturalization  48730  48914
-  Not a Canadian citizen               25079  28564</pre>
+<pre >##                                      
+##                                       Woman+   Man+
+##   Canadian citizens by birth          185014 193327
+##   Canadian citizens by naturalization  48730  48914
+##   Not a Canadian citizen               25079  28564</pre>
 
 <p><span style="color:grey; font-size:0.7em; margin-top:1em; font-style:italic">
 <b>Note:</b> the user guide explains that &ldquo;individuals in the category &lsquo;non-binary persons&rsquo; are distributed into the other two gender categories and are denoted by the &lsquo;+&rsquo; symbol.&rdquo;</span></p>

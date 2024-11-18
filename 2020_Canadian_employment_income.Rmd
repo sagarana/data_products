@@ -41,9 +41,7 @@ data2021 <- read_sav("cen_ind_2021_pumf_v2.sav")
 
 The [2021 Census Individuals PUMF User Guide](https://hdl.handle.net/11272.1/AB2/1WTDOP/EV7NLM) documents each variable and informs data preparation.
 
-Only a handful of variables are used in the app, and the data is limited to ages 18-69 (about 530K rows).
-
-Here's a sample table from the prepared dataset. 
+Only a handful of variables are used in the app, and the data is limited to ages 18-69 (about 530K rows). Here's a sample table from the prepared dataset. 
 
 ```{r, message=FALSE, warning=FALSE, comment=NA}
 census_subset_2021 <- data2021 %>%
@@ -53,6 +51,9 @@ census_subset_2021 <- data2021 %>%
         as_factor()   #for better labels and data handling
         
 levels(census_subset_2021$TENUR)[2] <- "Renter"
+```
+
+```{r, echo=TRUE}
 table(census_subset_2021$Citizen, census_subset_2021$Gender)
 ```
 <span style="color:grey; font-size:0.7em; margin-top:1em; font-style:italic"><b>Note:</b> the user guide explains that "individuals in the category 'non-binary persons' are distributed into the other two gender categories and are denoted by the '+' symbol."</span>
